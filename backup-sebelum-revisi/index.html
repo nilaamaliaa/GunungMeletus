@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOLCANO — Edukasi Gunung Berapi Indonesia</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="progress"></div>
+<header class="nav">
+  <button id="burger" aria-label="Buka menu" aria-expanded="false">☰</button>
+  <a href="#hero" class="logo">🌋 VOLCANO</a>
+  <input id="search" type="search" placeholder="Cari gunung / provinsi…" aria-label="Cari gunung">
+  <button id="litebtn" aria-pressed="false" title="Matikan efek berat (partikel, animasi dekoratif)">⚡ Mode Ringan</button><ul id="results" hidden></ul>
+</header>
+<aside id="side"><nav aria-label="Menu utama">
+  <a href="#hero">🏠 Beranda</a><a href="#umum">📘 Informasi Umum</a><a href="#lapisan">🧭 Lapisan Gunung</a><a href="#peta">🗺️ Peta Indonesia</a><a href="#galeri">📷 Galeri 74 Gunung</a><a href="#bencana">📈 Data Letusan</a><a href="#korban">⚠️ Data Korban</a><a href="#mitigasi">🛡️ Mitigasi</a><a href="#evakuasi">🎒 Panduan Evakuasi</a><a href="#peringatan">🚨 Peringatan Dini</a><a href="#penanggulangan">🚒 Penanggulangan</a><a href="#referensi">📚 Referensi</a>
+</nav></aside>
+<main>
+<section id="hero"><canvas id="embers" aria-hidden="true"></canvas>
+  <svg class="mtn" viewBox="0 0 400 200" aria-hidden="true"><path d="M0 200 L130 80 L160 95 L200 40 L240 95 L270 80 L400 200Z" fill="#141414"/><path d="M185 45 Q200 20 215 45Z" fill="#FF6A00" class="glow"/><circle cx="200" cy="30" r="14" fill="#E63900" class="smoke"/></svg>
+  <h1>VOLCANO</h1><p>Memahami gunung berapi Indonesia: penyebab, sebaran, dampak, dan cara menyelamatkan diri.</p>
+  <div class="btns"><a class="btn" href="#peta">Jelajahi Peta</a><a class="btn ghost" href="#mitigasi">Pelajari Mitigasi</a></div>
+  <div class="stats" id="stats"></div>
+</section>
+<section id="umum"><h2>Informasi Umum Gunung Berapi</h2><div id="umumBody"></div></section>
+<section id="lapisan"><h2>Lapisan dan Bagian Gunung Api</h2><div id="lapisanBody"></div></section>
+<section id="peta"><h2>Peta Interaktif Gunung Berapi Indonesia</h2>
+  <p>Klik penanda, gugus angka, atau nama di daftar. Seret untuk menggeser, gulir untuk zoom. Warna penanda mengikuti level status.</p>
+  <div class="maplayout">
+    <div class="maplist"><input id="mq" type="search" placeholder="Cari gunung…" aria-label="Cari gunung di peta"><select id="mprov" aria-label="Provinsi"></select><div id="mlist" role="list"></div></div>
+    <div id="mapwrap"><div id="map"><div class="skeleton">Memuat peta…</div></div><aside id="drawer" aria-live="polite"></aside></div>
+  </div>
+  <p class="dim" id="offline"></p>
+</section>
+<section id="galeri"><h2>Galeri Foto Gunung Berapi</h2>
+  <div class="filters"><input id="gq" type="search" placeholder="Cari nama / provinsi…" aria-label="Cari di galeri"><select id="gprov" aria-label="Provinsi"></select><select id="gtipe" aria-label="Jenis"></select><span id="gcount"></span></div>
+  <div id="gallery"></div></section>
+<section id="bencana"><h2>Data Bencana Letusan Gunung Berapi di Indonesia</h2><p>Sembilan letusan besar di Indonesia dari 2010 sampai 2026. Klik tiap kejadian untuk melihat kronologi dan korban.</p><ol id="timeline" class="tlist"></ol></section>
+<section id="korban"><h2>Data Korban Letusan di Indonesia</h2><div class="grid" id="ringkas"></div>
+<div class="seg" id="metric" role="tablist" aria-label="Pilih jenis korban"></div><p class="legend" id="klegend"></p>
+<div class="kwrap"><div id="kchart" class="kchart" role="list"></div><div id="ktip" class="ktip" hidden role="status"></div></div>
+<p class="dim">Urut dari korban meninggal terbanyak. Arahkan kursor (atau ketuk) batang untuk melihat rincian; klik untuk membuka detail gunung. ± = angka perkiraan.</p><p class="warn">Angka bersifat perkiraan dan dapat berbeda antar sumber. Data dari dokumen yang disediakan.</p></section>
+<section id="mitigasi"><h2>Langkah Mitigasi Bencana</h2><div id="mitigasiBody"></div></section>
+<section id="evakuasi"><h2>Panduan Evakuasi</h2><div id="evakuasiBody"></div></section>
+<section id="peringatan"><h2>Sistem Peringatan Dini</h2><div id="peringatanBody"></div></section>
+<section id="penanggulangan"><h2>Penanggulangan Bencana</h2><div id="penanggulanganBody"></div></section>
+<section id="referensi"><h2>Referensi</h2><ul id="refs"></ul></section>
+</main>
+<footer><p><b>Catatan:</b> status aktivitas gunung api bersifat dinamis dan selalu merujuk ke <a href="https://magma.esdm.go.id">magma.esdm.go.id</a>. Data tinggi/koordinat bertanda "PERLU VERIFIKASI" belum dicocokkan dengan tabel id.wikipedia. Situs edukasi, bukan pengganti arahan resmi PVMBG/BNPB/BPBD.</p></footer>
+<div id="lb" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lbt"><div class="lbbox"><header class="lbh"><button id="lbp" aria-label="Gunung sebelumnya">‹</button><h3 id="lbt"></h3><button id="lbn" aria-label="Gunung berikutnya">›</button><button id="lbx" aria-label="Tutup">✕</button></header><div id="lbc" class="lbb" tabindex="-1"></div><footer class="lbf"><button id="lbm" class="btn-pin"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z"/></svg> Lihat Lokasi di Peta</button><button id="lbclose" class="btn-out">Tutup</button></footer></div></div>
+<button id="top" aria-label="Kembali ke atas">▲</button>
+<script src="data/volcanoes.js"></script>
+<script src="data/status.js"></script>
+<script src="data/bencana.js"></script>
+<script src="data/content.js"></script>
+<script src="js/main.js"></script>
+</body></html>

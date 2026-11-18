@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOLCANO — Edukasi Gunung Berapi Indonesia</title>
+<script>(function(){try{var m=innerWidth<=1024,x=localStorage.getItem("sidebar"),o=m?false:(x===null?true:x==="1");if(!o)document.documentElement.className+=" sb-closed"}catch(e){}})()</script>
+<link rel="stylesheet" href="css/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="progress"></div>
+<header class="nav">
+  <button id="burger" aria-label="Tutup menu samping" aria-controls="side" aria-expanded="false"><i class="bi bi-list"></i></button>
+  <a href="#hero" class="logo"><i class="bi bi-triangle-fill"></i> VOLCANO</a>
+  <input id="search" type="search" placeholder="Cari gunung / provinsi…" aria-label="Cari gunung">
+  <button id="litebtn" aria-pressed="false" title="Matikan efek berat (partikel, animasi dekoratif)"><i class="bi bi-lightning-charge-fill"></i> Mode Ringan</button><ul id="results" hidden></ul>
+</header>
+<div id="scrim" aria-hidden="true"></div>
+<aside id="side"><nav aria-label="Menu utama">
+  <a href="#hero"><i class="bi bi-house-door-fill"></i> Beranda</a><a href="#umum"><i class="bi bi-info-circle-fill"></i> Informasi Umum</a><a href="#lapisan"><i class="bi bi-compass"></i> Lapisan Gunung</a><a href="#peta"><i class="bi bi-map"></i> Peta Indonesia</a><a href="#galeri"><i class="bi bi-camera"></i> Galeri 74 Gunung</a><a href="#tahunan"><i class="bi bi-bar-chart-fill"></i> Grafik per Tahun</a><a href="#bencana"><i class="bi bi-graph-up"></i> Data Letusan</a><a href="#korban"><i class="bi bi-exclamation-triangle-fill"></i> Data Korban</a><a href="#mitigasi"><i class="bi bi-shield-check"></i> Mitigasi</a><a href="#evakuasi"><i class="bi bi-backpack2"></i> Panduan Evakuasi</a><a href="#peringatan"><i class="bi bi-bell-fill"></i> Peringatan Dini</a><a href="#penanggulangan"><i class="bi bi-life-preserver"></i> Penanggulangan</a><a href="#referensi"><i class="bi bi-journals"></i> Referensi</a>
+</nav></aside>
+<main>
+<section id="hero"><canvas id="embers" aria-hidden="true"></canvas>
+  <svg class="mtn" viewBox="0 0 400 200" aria-hidden="true"><path d="M0 200 L130 80 L160 95 L200 40 L240 95 L270 80 L400 200Z" fill="#141414"/><path d="M185 45 Q200 20 215 45Z" fill="#F2B277" class="glow"/><circle cx="200" cy="30" r="14" fill="#D96C00" class="smoke"/></svg>
+  <h1>VOLCANO</h1><p>Memahami gunung berapi Indonesia: penyebab, sebaran, dampak, dan cara menyelamatkan diri.</p>
+  <div class="btns"><a class="btn" href="#peta">Jelajahi Peta</a><a class="btn ghost" href="#mitigasi">Pelajari Mitigasi</a></div>
+  <div class="stats" id="stats"></div>
+</section>
+<section id="umum"><h2>Informasi Umum Gunung Berapi</h2><div id="umumBody"></div></section>
+<section id="lapisan"><h2>Lapisan dan Bagian Gunung Api</h2><div id="lapisanBody"></div></section>
+<section id="peta"><h2>Peta Interaktif Gunung Berapi Indonesia</h2>
+  <p>Klik penanda, gugus angka, atau nama di daftar. Seret untuk menggeser, gulir untuk zoom. Warna penanda mengikuti level status.</p>
+  <div class="maplayout">
+    <div class="maplist"><input id="mq" type="search" placeholder="Cari gunung…" aria-label="Cari gunung di peta"><select id="mprov" aria-label="Provinsi"></select><div id="mlist" role="list"></div></div>
+    <div id="mapwrap"><div id="map"><div class="skeleton">Memuat peta…</div></div><aside id="drawer" aria-live="polite"></aside></div>
+  </div>
+  <p class="dim" id="offline"></p>
+</section>
+<section id="galeri"><h2>Galeri Foto Gunung Berapi</h2>
+  <div class="filters"><input id="gq" type="search" placeholder="Cari nama / provinsi…" aria-label="Cari di galeri"><select id="gprov" aria-label="Provinsi"></select><select id="gtipe" aria-label="Jenis"></select><span id="gcount"></span></div>
+  <div id="gallery"></div></section>
+<section id="tahunan"><h2>Grafik Gunung Meletus per Tahun, 2000 – 2026</h2>
+<p>Berapa banyak gunung api Indonesia yang erupsi dari tahun ke tahun? Satu batang = jumlah gunung berbeda yang tercatat erupsi pada tahun itu. Arahkan kursor (atau ketuk) batang untuk melihat nama gunungnya.</p>
+<div class="grid" id="ystats"></div>
+<div class="kwrap"><div id="ychart" class="kplot" role="list"></div><div id="ytip" class="ktip" hidden role="status"></div></div>
+<p class="legend" id="ylegend"></p>
+<p class="dim" id="ynote"></p></section>
+<section id="bencana"><h2>Data Bencana Letusan Gunung Berapi di Indonesia</h2><p>Sembilan letusan besar di Indonesia dari 2010 sampai 2026. Klik tiap kejadian untuk melihat kronologi dan korban.</p><ol id="timeline" class="tlist"></ol></section>
+<section id="korban"><h2>Data Korban Letusan di Indonesia</h2><div class="grid" id="ringkas"></div>
+<div class="seg" id="metric" role="tablist" aria-label="Pilih jenis korban"></div><p class="legend" id="klegend"></p>
+<div class="kwrap"><div id="kchart" class="kplot" role="list"></div><div id="ktip" class="ktip" hidden role="status"></div></div>
+<p class="dim">Urut dari korban meninggal terbanyak. Arahkan kursor (atau ketuk) batang untuk melihat rincian; klik untuk membuka detail gunung. ± = angka perkiraan.</p><p class="warn">Angka bersifat perkiraan dan dapat berbeda antar sumber. Data dari dokumen yang disediakan.</p></section>
+<section id="mitigasi"><h2>Langkah Mitigasi Bencana</h2><div id="mitigasiBody"></div></section>
+<section id="evakuasi"><h2>Panduan Evakuasi</h2><div id="evakuasiBody"></div></section>
+<section id="peringatan"><h2>Sistem Peringatan Dini</h2><div id="peringatanBody"></div></section>
+<section id="penanggulangan"><h2>Penanggulangan Bencana</h2><div id="penanggulanganBody"></div></section>
+<section id="referensi"><h2>Referensi</h2><ul id="refs"></ul></section>
+</main>
+<footer><p><b>Catatan:</b> status aktivitas gunung api bersifat dinamis dan selalu merujuk ke <a href="https://magma.esdm.go.id">magma.esdm.go.id</a>. Data tinggi/koordinat bertanda "PERLU VERIFIKASI" belum dicocokkan dengan tabel id.wikipedia. Situs edukasi, bukan pengganti arahan resmi PVMBG/BNPB/BPBD.</p></footer>
+<div id="lb" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lbt"><div class="lbbox"><header class="lbh"><button id="lbp" aria-label="Gunung sebelumnya"><i class="bi bi-chevron-left"></i></button><h3 id="lbt"></h3><button id="lbn" aria-label="Gunung berikutnya"><i class="bi bi-chevron-right"></i></button><button id="lbx" aria-label="Tutup"><i class="bi bi-x-lg"></i></button></header><div id="lbc" class="lbb" tabindex="-1"></div><footer class="lbf"><button id="lbm" class="btn-pin"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z"/></svg> Lihat Lokasi di Peta</button><button id="lbclose" class="btn-out">Tutup</button></footer></div></div>
+<button id="top" aria-label="Kembali ke atas"><i class="bi bi-chevron-up"></i></button>
+<script src="data/volcanoes.js"></script>
+<script src="data/status.js"></script>
+<script src="data/bencana.js"></script>
+<script src="data/letusan_tahunan.js"></script>
+<script src="data/content.js"></script>
+<script src="js/main.js"></script>
+</body></html>
